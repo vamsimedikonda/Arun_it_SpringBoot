@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -30,6 +30,41 @@ public class Student {
 	
 	@Column(nullable = false,length = 20)
 	private String stuBrach;
+
+	public Student() {
+		super();
+	}
+
+	public Long getStuId() {
+		return stuId;
+	}
+
+	public void setStuId(Long stuId) {
+		this.stuId = stuId;
+	}
+
+	public String getStuName() {
+		return stuName;
+	}
+
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
+
+	public String getStuBrach() {
+		return stuBrach;
+	}
+
+	public void setStuBrach(String stuBrach) {
+		this.stuBrach = stuBrach;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [stuId=" + stuId + ", stuName=" + stuName + ", stuBrach=" + stuBrach + "]";
+	}
+	
+	
 
 	
 }
