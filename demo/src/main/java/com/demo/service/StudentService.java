@@ -1,5 +1,9 @@
 package com.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +20,34 @@ public class StudentService {
 		return studentRepository.save(student);
 	}
 
+	public Student studentService(Long stuId) {
+		
+		Optional<Student> stu = studentRepository.findById(stuId);
+		if(stu.isPresent()) {
+			return stu.get();
+		}else {
+			return null;
+		}
+	}
+
+	public List<Student> allStudentService() {
+	    List<Student> students = studentRepository.findAll();
+	    List<Student> processedStudents = new ArrayList<>();
+
+	    for (Student student : students) {
+	        processedStudents.add(student);
+	    }
+
+	    return processedStudents;
+	}
+
+	public Student updateById(Long stuId, Student student) {
+		Optional<Student> existingStudentDetails= studentRepository.findById(stuId);
+		Student existingStudentDetail = existingStudentDetails.get();
+		existingStudentDetail.setStuBrach(student.getStuBrach());
+		existingStudentDetail.setStuName(student.getStuName());
+		return studentRepository.save(existingStudentDetail);
+	}
+
+	
 }
