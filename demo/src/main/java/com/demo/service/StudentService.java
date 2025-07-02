@@ -41,6 +41,13 @@ public class StudentService {
 	    return processedStudents;
 	}
 
+	
+
+	public Integer updateNativeQuery(Long studentId, String branch) {
+		Integer stu =studentRepository.updateStudentBranch(studentId,branch);
+		return stu;
+	}
+	
 	public Student updateById(Long stuId, Student student) {
 		Optional<Student> existingStudentDetails= studentRepository.findById(stuId);
 		Student existingStudentDetail = existingStudentDetails.get();
@@ -49,5 +56,9 @@ public class StudentService {
 		return studentRepository.save(existingStudentDetail);
 	}
 
-	
+	public void deleteStudent(Long stuId) {
+		studentRepository.deleteById(stuId);
+		
+	}
+
 }

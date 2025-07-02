@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -59,4 +60,20 @@ public class MyController {
 		return new ResponseEntity<>(stu,HttpStatus.FOUND);
 		
 	}
+	
+	@PutMapping("/updateNativeQuery")
+	public ResponseEntity<Integer> updateNativeQuery(@RequestParam Long studentId,@RequestParam String branch ){
+		Integer stu= studentService.updateNativeQuery(studentId,branch);
+		
+		return new ResponseEntity<>(stu,HttpStatus.FOUND);
+		
+	}
+	
+	@DeleteMapping("/delete")
+	public void deleteStudent(@RequestParam Long stuId) {
+		studentService.deleteStudent(stuId);
+	}
+	
+	
+
 }
